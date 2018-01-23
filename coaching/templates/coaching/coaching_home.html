@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Coaching Home{% endblock title %}
+
+
+{% block context %}
+
+<h1>Coaching Home</h1>
+
+{% for space in spaces %}
+
+<b><i>{{ space }}</i></b>
+
+        <br><br>
+
+Coach: {% for coach in space.coaches %} <i>{{ coach.member.username }}</i> {% endfor %}
+
+        <br><br>
+
+Clients: {% for client in space.clients %} <i>{{ client.member.username }}</i> <br> {% endfor %}
+
+        <br><br>
+
+
+
+{% endfor %}
+
+{% endblock context %}

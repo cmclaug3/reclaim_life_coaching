@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}LOGIN{% endblock title %}
+
+
+{% block context %}
+
+<h1>Login</h1>
+
+<form action="{% url 'member_login' %}" method="POST">{% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Submit</button>
+
+    <p>Haven't signed up? --> <a href="{% url 'register' %}">Register</a><p/>
+</form>
+
+
+<!--JUST FOR INNER TESTING PURPOSES...EVENTUALLY REMOVE-->
+
+<br><br>
+
+<h5>{{total_members}}</h5>
+
+{% endblock context %}

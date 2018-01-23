@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}JOIN COACH{% endblock title %}
+
+
+{% block context %}
+
+<h1>Connect with a Coach</h1>
+
+<form action="{% url 'client_join_coach_view' %}" method="POST">{% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock context %}

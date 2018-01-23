@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{% block title %}{% endblock title %}</title>
+	</head>
+	<body>
+
+    {% if messages %}
+        <div>
+          <strong>Messages:</strong>
+          <ul>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+
+        <strong>Menu:</strong>
+            {% if user.is_authenticated %}
+                <a href="{% url 'home' %}">Home</a> |
+            {% if user.status == 'Coach' %}
+                    <a href="{% url 'coaching_home' %}">Coach Home</a> |
+            {% endif %}
+            {% if user.status == 'None' %}
+                <a href="{% url 'client_join_coach_view' %}">Join Coach</a> |
+            {% endif %}
+            {% if user.status != 'Client' %}
+                <a href="{% url 'become_coach' %}">Become a Coach</a> |
+            {% endif %}
+                <a href="{% url 'member_logout' %}">Logout</a> |
+            {% else %}
+                <a href="{% url 'member_login' %}">Login</a> |
+                <a href="{% url 'register' %}">Register</a> |
+             {% endif %}
+
+            <hr>
+
+        {% block context %}
+
+        {% endblock context %}
+
+
+
+
+
+	</body>
+
+</html>

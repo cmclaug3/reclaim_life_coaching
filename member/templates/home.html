@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}HOME{% endblock title %}
+
+
+{% block context %}
+
+    <h1>Reclaim Life Coaching Home</h1>
+
+    Hello <i>{{member.username}}</i>, nice to see ya...
+
+    <br><br><br>
+
+    do you have a space? --> {% if member.get_spaces %} Yep
+
+    <br><br>
+
+    {% for space in member.get_spaces %}
+
+        <i>{{ space }}<i/><br>
+
+    {% endfor %}
+
+    {% else %}
+
+        Nope
+
+    {% endif %}
+
+
+<br><br>
+
+{% if member.status != 'None' %}
+    <b>{{member.status}}</b>
+{% endif %}
+
+
+
+{% endblock context %}
